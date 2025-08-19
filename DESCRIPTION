@@ -1,0 +1,11 @@
+Package: gut
+Title: General utilities
+Version: 0.0.0.9000
+Authors@R: 
+    person("Mark", "Wheldon", , "biostatmark@gmail.com", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-6897-9644"))
+Description: General utility functions.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
