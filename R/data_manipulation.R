@@ -65,13 +65,16 @@ number_groups <- function(x, add = FALSE) {
 ##'
 ##' @param x Vector.
 ##' @param diff_tol The difference that marks a break in the sequence.
+##' @param first_is_break Logical; should the first element of \code{x} be
+##'     considered a \dQuote{break} and be flagged?
 ##' @param add \code{\link[base]{cbind}} the result to \code{x}?
 ##' @return Vector (\code{add = FALSE}) or data frame (\code{add = TRUE}).
 ##' @author Mark Wheldon
 ##' @export
-find_breaks <- function(x, diff_tol = (if (is.numeric(x)) {1} else {0}), add = FALSE) {
+find_breaks <- function(x, diff_tol = (if (is.numeric(x)) {1} else {0}), first_is_break = TRUE, add = FALSE) {
     stopifnot(is.numeric(x) || is.logical(x))
-    out <- as.logical(c(1, diff(x) != diff_tol))
+    if (first_is_break) out <- as.logical(c(TRUE, diff(x) != diff_tol))
+    else out <- as.logical(c(FALSE, diff(x) != diff_tol))
     if (add) return(data.frame(x, out))
     else return(out)
 }
