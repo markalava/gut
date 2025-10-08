@@ -4,7 +4,7 @@
 ###
 ################################################################################
 
-##' Create SAS FIRST. and LAST. variables
+##' Create SAS-style FIRST. and LAST. variables
 ##'
 ##' Mimics the automatic DATA step variables 'FIRST.' and
 ##' 'LAST.'. This is an order-sensitive operation; it does not do what
@@ -70,7 +70,7 @@ number_groups <- function(x, add = FALSE) {
 ##' @author Mark Wheldon
 ##' @export
 find_breaks <- function(x, diff_tol = 1, add = FALSE) {
-    stopifnot(is.numeric(x))
+    stopifnot(is.numeric(x) || is.logical(x))
     out <- as.logical(c(1, diff(x) != diff_tol))
     if (add) return(data.frame(x, out))
     else return(out)
