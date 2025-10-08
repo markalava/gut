@@ -69,7 +69,7 @@ number_groups <- function(x, add = FALSE) {
 ##' @return Vector (\code{add = FALSE}) or data frame (\code{add = TRUE}).
 ##' @author Mark Wheldon
 ##' @export
-find_breaks <- function(x, diff_tol = 1, add = FALSE) {
+find_breaks <- function(x, diff_tol = (if (is.numeric(x)) {1} else {0}), add = FALSE) {
     stopifnot(is.numeric(x) || is.logical(x))
     out <- as.logical(c(1, diff(x) != diff_tol))
     if (add) return(data.frame(x, out))
