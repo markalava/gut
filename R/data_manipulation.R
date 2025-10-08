@@ -71,7 +71,7 @@ number_groups <- function(x, add = FALSE) {
 ##' @return Vector (\code{add = FALSE}) or data frame (\code{add = TRUE}).
 ##' @author Mark Wheldon
 ##' @export
-find_breaks <- function(x, diff_tol = (if (is.numeric(x)) {1} else {0}), first_is_break = TRUE, add = FALSE) {
+find_breaks <- function(x, diff_tol = (if (is.numeric(x)) {1} else {0}), first_is_break = FALSE, add = FALSE) {
     stopifnot(is.numeric(x) || is.logical(x))
     if (first_is_break) out <- as.logical(c(TRUE, diff(x) != diff_tol))
     else out <- as.logical(c(FALSE, diff(x) != diff_tol))
